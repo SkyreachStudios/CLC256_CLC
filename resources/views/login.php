@@ -17,11 +17,10 @@
             <td><input type = "password" name = "password" /></td>
         </tr>
         <tr>
-            <td colspan = "2" align = "center">
+            <td colspan = "2" align = "center">S
                 <input type = "submit" value = "Login" />
             </td>
     </table>
 </form>
 
 </body>
-</html>

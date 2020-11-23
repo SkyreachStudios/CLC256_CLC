@@ -4,18 +4,16 @@
 namespace App\Models;
 
 
-class UserModel
+class MemberModel
 {
     private  $email;
     private $password;
     private $name;
     //constructor
-    function __construct($Password,$Email){
+    function __construct($Password,$Email, $Name){
         $this->email = $Email;
         $this->password = $Password;
-
-
-
+        $this->name = $Name;
     }
     //getters
     function get_email(){
@@ -25,6 +23,9 @@ class UserModel
         return $this->password;
     }
 
+    function get_name(){
+        return $this->name;
+    }
 
 
 }
