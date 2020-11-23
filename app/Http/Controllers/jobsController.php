@@ -117,7 +117,7 @@ class jobsController extends Controller
     public function deleteJob(Request $request)
     {
         $id=$request->input('id');
-        $company=$request->input('title');
+        $company=$request->input('company');
         $title=$request->input('title');
         $location=$request->input('location');
         $salary=$request->input('salary');

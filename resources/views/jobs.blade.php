@@ -120,7 +120,7 @@
                                     {{ csrf_field() }}
                                     <div class = "form-group">
                                         <div class="col-md-6">
-                                            <label for="title" class="col-md-4 control-label">Company</label>
+                                            <label for="title" class="col-md-4 control-label">Title</label>
                                             <input type="text" id="title" name="title" value= "Title">
                                         </div>
                                     </div>
@@ -132,7 +132,7 @@
                                     </div>
                                     <div class = "form-group">
                                         <div class="col-md-6">
-                                            <label for="location" class="col-md-4 control-label">Position</label>
+                                            <label for="location" class="col-md-4 control-label">Location</label>
                                             <input type="text" id="location" name="location" value= "Job Location">
                                         </div>
                                     </div>

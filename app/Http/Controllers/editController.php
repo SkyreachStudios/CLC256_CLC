@@ -218,8 +218,8 @@ class editController extends Controller
 
 
 
-
-        $data = ['username' => $email, 'password' => $password, 'age' => $age, 'gender' => $gender, 'education' => $education, 'employer' => $employer, 'name' => $name, 'employmentList' => $employmentList];
+        $skills=SecurityService::skills($user);
+        $data = ['username' => $email, 'password' => $password, 'age' => $age, 'gender' => $gender, 'education' => $education, 'employer' => $employer, 'name' => $name, 'employmentList' => $employmentList, 'skillsList'=>$skills];
         return view("edit")->with($data);
 
     }

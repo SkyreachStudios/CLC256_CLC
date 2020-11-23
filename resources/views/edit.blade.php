@@ -131,7 +131,6 @@
                                         <label for="description" class="col-md-4-control-label">Job Duties</label>
                                         <textarea name="description" id="description" rows="3" cols="35">
                                             <?php echo $employerData->get_description();?>
-
                                           </textarea><br>
                                                         </div>
                                                     </div>
@@ -154,18 +153,8 @@
                                             </div>
                                         </div>
                                         <br>
-
                                     </form>
-
-
-
-
-
-
-
                             @endforeach
-                    @endif
-
 
                             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">+</button>
                             <div id="demo" class="collapse">
@@ -210,18 +199,12 @@
                                     </div>
 
                                 </form>
-
-
                             </div>
-
-
-
-
-
                 </div>
             </div>
         </div>
     </div>
+    @endif
 </div>
 
 
@@ -326,13 +309,6 @@
                             <br>
 
                         </form>
-
-
-
-
-
-
-
                     @endforeach
                     @endif
 
