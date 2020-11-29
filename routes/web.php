@@ -58,5 +58,12 @@ Route::post('/updateJob','jobsController@updateJob');
 Route::post('/deleteJob','jobsController@deleteJob');
 Route::post('/addJob','jobsController@addJob');
 
+Route::get('/groups','groupsController@index');
+Route::post('/updateGroup','groupsController@updateGroup');
+Route::post('/deleteGroup','groupsController@deleteGroup');
+Route::post('/addGroup','groupsController@addGroup');
+Route::post('/visitPage','groupsController@visitPage');
+Route::post('/joinGroup','groupsController@joinGroup');
+Route::post('/leaveGroup','groupsController@leaveGroup');
 
 

@@ -46,11 +46,13 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                @if(isset($_SESSION))
+
+                @if(isset($_SESSION) && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']=1)
                 <ul class="nav navbar-nav">
 
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/jobs') }}">Job Board</a></li>
+                    <li><a href="{{ url('/groups') }}">Groups</a></li>
                 </ul>
 
             @endif
@@ -65,7 +67,7 @@
 
                         <li><a href="{{ url('/edit') }}">Edit Profile</a></li>
 
-                    @elseif (isset($_SESSION))
+                    @elseif (isset($_SESSION) && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']=1)
 
 
                             <li><a href="{{ url('/loginForm') }}">Logout</a></li>

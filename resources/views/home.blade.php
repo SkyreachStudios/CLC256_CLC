@@ -56,6 +56,7 @@
 
                 <div class="panel-body">
                      You are logged in!
+
                 </div>
 
                 <!-- Add icon library -->

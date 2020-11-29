@@ -11,10 +11,13 @@ use App\Models\memberProfileModel;
 use App\Models\SkillsModel;
 use App\Models\UserModel;
 use App\Services\Data\SecurityDao;
+use App\Services\Utility\Logger;
 
 class SecurityService
 {
     public static function login(UserModel $user){
+        (new \App\Services\Utility\Logger)->info("Entering SecurityService::login() handling login or logout");
+
         return SecurityDao::findByUser($user);
 
     }

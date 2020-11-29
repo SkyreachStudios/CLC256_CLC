@@ -11,15 +11,23 @@ class adminController extends Controller
 {
     public function index()
     {
-        $membersList = SecurityService::getAllMembers();
+        if(isset($_SESSION) && $_SESSION['admin']=true){
+            $membersList = SecurityService::getAllMembers();
 
 
-        $memberProfileList = $this->createUsersList($membersList);
+            $memberProfileList = $this->createUsersList($membersList);
 
 
-        $data = ['memberProfileList' => $memberProfileList];
+            $data = ['memberProfileList' => $memberProfileList];
 
-        return view('admin')->with($data);
+            return view('admin')->with($data);
+
+        }
+        else{
+            return view("/loginForm");
+        }
+
+
     }
 
     public function suspend(){

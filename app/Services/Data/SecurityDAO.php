@@ -11,6 +11,7 @@ use App\Models\memberProfileModel;
 use App\Models\SkillsModel;
 use App\Models\UserModel;
 use App\User;
+use App\Services\Utility\Logger;
 use PDO;
 use PDOException;
 
@@ -31,6 +32,7 @@ class SecurityDAO
             $conn = new PDO("mysql:host=$servername;dbname=clc", $username1, $password1);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            (new \App\Services\Utility\Logger)->info("Executing findByUser(). Searching for given user in database.");
 
 
             //echo "Connected successfully";
@@ -41,10 +43,15 @@ class SecurityDAO
 
                 if ($result->rowCount() > 0) {
                     //echo "Login Success!";
+                    (new \App\Services\Utility\Logger)->info("Valid user input! Proceeding with action.");
+
 
                     return true;
                 } else {
                     //echo "Wrong login data or there was an error";
+                    (new \App\Services\Utility\Logger)->info("Invalid user input. Redirecting to failed login.");
+
+                    Log::info("Invalid user input. Redirecting to failed login.");
 
                     return false;
                 }
@@ -54,6 +61,8 @@ class SecurityDAO
 
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage();
+            (new \App\Services\Utility\Logger)->error("Exception SecurityDAO::findByUser()" . $e->getMessage());
+
 
         }
 
