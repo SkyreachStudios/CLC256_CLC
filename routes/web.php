@@ -57,6 +57,9 @@ Route::get('/jobs','jobsController@index');
 Route::post('/updateJob','jobsController@updateJob');
 Route::post('/deleteJob','jobsController@deleteJob');
 Route::post('/addJob','jobsController@addJob');
+Route::post('/searchJobs','jobsController@searchJob');
+Route::post('/apply', 'jobsController@apply');
+Route::post('/submitApply','jobsController@submitApply');
 
 Route::get('/groups','groupsController@index');
 Route::post('/updateGroup','groupsController@updateGroup');
@@ -65,5 +68,6 @@ Route::post('/addGroup','groupsController@addGroup');
 Route::post('/visitPage','groupsController@visitPage');
 Route::post('/joinGroup','groupsController@joinGroup');
 Route::post('/leaveGroup','groupsController@leaveGroup');
+
 
 

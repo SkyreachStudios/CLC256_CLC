@@ -87,6 +87,25 @@
             transition: max-height 0.2s ease-out;
             background-color: #f1f1f1;
         }
+        #search{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        #searchSubmit{
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 10%;
+            font-size: 8px;
+        }
+
 
 
     </style>
@@ -101,7 +120,20 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">E=Pro Job Board</div>
+                <div class="panel-heading">E=Pro Job Board
+
+                </div>
+                <form class="form-horizontal" id="search" name="search" role="form" method="POST" action="searchJobs">
+                    {{csrf_field()}}
+                    <div>
+                        <label for="jobsearch">Search:</label>
+                        <input type="text" id="jobsearch" name="jobsearch" placeholder= "Keyword or Company Name...">
+                        <button type="submit" class="btn btn-info" id="searchSubmit">
+                            <i class="fa fa-btn fa-search"></i>
+                        </button>
+                    </div>
+
+                </form>
                 <!-- Add icon library -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -262,7 +294,33 @@
                                             <p>Salary: <?php echo $job->getSalary()?></p>
                                             <p>Basic Qualifications: <?php echo $job->getQualifications()?>
                                             </p><p><?php echo $job->getDescription()?></p>
+
+
+                                            <form class="form-horizontal" role="form" method="POST" action="apply">
+                                                {{ csrf_field() }}
+                                                <input type ="hidden" name ='id' id="id" value = <?php echo $job->getId();?>>
+                                                <input type ="hidden" name ='company' id="company" value = <?php echo $job->getCompany();?>>
+                                                <input type ="hidden" name ='title' id="title" value = <?php echo $job->getTitle();?>>
+                                                <input type ="hidden" name ='location' id="location" value = <?php echo $job->getLocation();?>>
+                                                <input type ="hidden" name ='salary' id="salary" value = <?php echo $job->getSalary();?>>
+                                                <textarea style="display:none;" name ='qualifications' id="qualifications"> <?php echo $job->getQualifications();?></textarea>
+                                                <textarea style="display:none;" name ='description' id="description"> <?php echo $job->getDescription();?></textarea>
+                                                <div class="form-group">
+                                                    <div >
+                                                        <button type="submit" class="btn btn-info">
+                                                            <i class="fa fa-btn fa-star"></i> Apply
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                            </form>
+
+
+
+
                                         </div>
+
                                         <hr>
                                     </div>
                                 @endforeach
@@ -293,6 +351,16 @@
                     content.style.maxHeight = content.scrollHeight + "px";
                 }
             });
+        }
+    </script>
+
+
+    <script>
+        function openForm() {
+            document.getElementById("popupForm").style.display = "block";
+        }
+        function closeForm() {
+            document.getElementById("popupForm").style.display = "none";
         }
     </script>
 @endsection

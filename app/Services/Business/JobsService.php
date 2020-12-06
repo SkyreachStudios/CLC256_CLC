@@ -31,6 +31,10 @@ class JobsService
         JobsDAO::deleteJob($id);
     }
 
+    public static function searchJobs($searchTerm){
+       return JobsDAO::searchForJobs($searchTerm);
+    }
+
 
 
 

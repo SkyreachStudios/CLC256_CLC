@@ -50,7 +50,7 @@ $jobsList=[];
 
                     return $jobsList;
                 } else {
-                    //echo "Wrong login data or there was an error";
+
 
 
                 }
@@ -190,5 +190,44 @@ $jobsList=[];
         }
     }
 
+    public static function searchForJobs($searchTerm){
+        $job=self::getAllJobs();
+$searchedJobs=[];
+        $counter = 0;
+    if(sizeof($job)>0){
+        $length = sizeof($job);
+        for($i=0;$i<$length;$i++){
+
+            $company=$job[$i]->getCompany();
+            $title=$job[$i]->getTitle();
+            $desc=$job[$i]->getDescription();
+            $qualifications=$job[$i]->getQualifications();
+
+
+
+
+
+            if(strpos($company, $searchTerm)!==false||strpos($title, $searchTerm)!==false||strpos($desc, $searchTerm)!==false ||strpos($qualifications, $searchTerm)!==false){
+
+                $searchedJobs[$counter]=$job[$i];
+
+
+                $counter = $counter+1;
+
+            }
+            else{
+
+            }
+
+        }
+        return $searchedJobs;
+    }
+    else{
+        //no jobs found
+
+    }
+
+
+    }
 
 }
