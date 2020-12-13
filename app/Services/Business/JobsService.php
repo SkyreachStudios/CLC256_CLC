@@ -35,6 +35,10 @@ class JobsService
        return JobsDAO::searchForJobs($searchTerm);
     }
 
+    public static function findJobByID($id){
+        return JobsDAO::findJobByID($id);
+    }
+
 
 
 

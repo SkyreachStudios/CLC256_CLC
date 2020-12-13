@@ -230,4 +230,48 @@ $searchedJobs=[];
 
     }
 
+    //Find user by ID
+    public static function findJobByID($id)
+    {
+        $servername = "localhost";
+        $username1 = "root";
+        $password1 = "root";
+        $port = "3306";
+
+
+
+
+
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=clc", $username1, $password1);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+            //echo "Connected successfully";
+            $stmt = "SELECT * FROM jobs WHERE ID LIKE '$id'";
+            $result = $conn->query($stmt);
+
+
+            if ($result->rowCount() > 0) {
+                $foundJob = $result->fetchAll();
+                $Job= new jobModel($foundJob[0][0],$foundJob[0][1],$foundJob[0][2],$foundJob[0][3],$foundJob[0][4],$foundJob[0][5],$foundJob[0][6]);
+
+                return $Job;
+            } else {
+
+                echo "Did not find a job which matches the given ID";
+
+
+            }
+
+
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+
+        }
+    }
+
 }

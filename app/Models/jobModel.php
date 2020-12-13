@@ -4,7 +4,7 @@
 namespace App\Models;
 
 
-class jobModel
+class jobModel implements \Serializable
 {
     private  $id;
     private $company;
@@ -84,6 +84,16 @@ class jobModel
     public function getQualifications()
     {
         return $this->qualifications;
+    }
+
+    public function serialize()
+    {
+        return get_object_vars($this);
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
     }
 
 }

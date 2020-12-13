@@ -22,6 +22,10 @@ class SecurityService
 
     }
 
+    public static function findUserByID($id){
+        return SecurityDao::findUserByID($id);
+    }
+
     public static function register(MemberModel $user){
         return SecurityDao::registerUser($user);
     }

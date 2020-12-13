@@ -11,7 +11,7 @@ class adminController extends Controller
 {
     public function index()
     {
-        if(isset($_SESSION) && $_SESSION['admin']=true){
+
             $membersList = SecurityService::getAllMembers();
 
 
@@ -22,10 +22,9 @@ class adminController extends Controller
 
             return view('admin')->with($data);
 
-        }
-        else{
+
             return view("/loginForm");
-        }
+
 
 
     }

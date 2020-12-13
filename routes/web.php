@@ -69,5 +69,7 @@ Route::post('/visitPage','groupsController@visitPage');
 Route::post('/joinGroup','groupsController@joinGroup');
 Route::post('/leaveGroup','groupsController@leaveGroup');
 
+Route::resource('/rest', 'RestController');
+
 
 

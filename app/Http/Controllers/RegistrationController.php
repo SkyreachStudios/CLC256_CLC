@@ -23,11 +23,11 @@ class RegistrationController extends Controller
         session_start();
 
 
+        $employmentList = [];
 
+        $skills=[];
 
-
-
-        $data = ['username' => $email, 'password' => $password, 'age'=> '0', 'gender'=>'N', 'education'=>'N/A', 'employer'=>'N/A', 'name'=>$name];
+        $data = ['username' => $email, 'password' => $password, 'age'=> '0', 'gender'=>'N', 'education'=>'N/A', 'employer'=>'N/A', 'name'=>$name,'employmentList' => $employmentList, 'skillsList'=>$skills];
 
         if(SecurityService::register($user)){
 

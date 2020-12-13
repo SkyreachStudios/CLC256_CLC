@@ -287,6 +287,53 @@ class SecurityDAO
 
         }
     }
+    //Find user by ID
+    public static function findUserByID($id)
+    {
+        $servername = "localhost";
+        $username1 = "root";
+        $password1 = "root";
+        $port = "3306";
+
+
+
+
+
+
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=clc", $username1, $password1);
+            // set the PDO error mode to exception
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+
+            //echo "Connected successfully";
+            $stmt = "SELECT * FROM users WHERE ID LIKE '$id'";
+            $result = $conn->query($stmt);
+
+
+            if ($result->rowCount() > 0) {
+                $foundUser = $result->fetchAll();
+                $user = new UserModel($foundUser[0][3], $foundUser[0][2]);
+
+                return $user;
+            } else {
+
+                echo "Did not find a user which matches the given ID";
+
+
+            }
+
+
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+
+        }
+    }
+
+
+
+
     //gets the name of the given user
     public static function getUserName(UserModel $user)
     {
