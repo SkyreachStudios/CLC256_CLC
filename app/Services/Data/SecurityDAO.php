@@ -51,7 +51,7 @@ class SecurityDAO
                     //echo "Wrong login data or there was an error";
                     (new \App\Services\Utility\Logger)->info("Invalid user input. Redirecting to failed login.");
 
-                    Log::info("Invalid user input. Redirecting to failed login.");
+
 
                     return false;
                 }

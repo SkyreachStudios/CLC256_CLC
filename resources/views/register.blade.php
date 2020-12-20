@@ -52,15 +52,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('password-confirm') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control" name="password-confirm">
 
-                                @if ($errors->has('password_confirmation'))
+                                @if ($errors->has('password-confirm'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong>{{ $errors->first('password-confirm') }}</strong>
                                     </span>
                                 @endif
                             </div>

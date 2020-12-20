@@ -12,6 +12,11 @@ class LoginController extends Controller
 
     public function index(Request $request)
     {
+        $inputs = request()->validate([
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+
         (new \App\Services\Utility\Logger2)->info("Entering LoginController::index()");
 
 
@@ -19,10 +24,13 @@ class LoginController extends Controller
         $password = $request->input('password');
         $user = new UserModel($password,$email);
 
+
         if(isset($_SESSION)){
             if($_SESSION['loggedIn']==1) {
+                (new \App\Services\Utility\Logger2)->info("Logging out. Clearing session variables...");
                 session_destroy();
                 session_start();
+                unset($_SESSION['admin']);
                 $_SESSION['username'] = "";
                 $_SESSION['password'] = "";
                 $_SESSION['loggedIn'] = 0;
@@ -36,7 +44,7 @@ class LoginController extends Controller
         }
         else{
             if(SecurityService::login($user)){
-
+                (new \App\Services\Utility\Logger2)->info("Capturing session variables...");
 
                 session_start();
                 $_SESSION['username'] = $email;
@@ -116,6 +124,18 @@ class LoginController extends Controller
         return view("home")->with($data);
     }
     else{
+        (new \App\Services\Utility\Logger2)->info("Logging out. Clearing session variables...");
+
+        $_SESSION['username'] = "";
+        $_SESSION['password'] = "";
+        $_SESSION['loggedIn'] = 0;
+        $_SESSION['age'] = '0';
+        $_SESSION['gender'] = "";
+        $_SESSION['education'] = "";
+        $_SESSION['employer'] = "";
+        $_SESSION['admin'] = "false";
+        $_SESSION['suspended']="false";
+        unset($_SESSION['admin']);
         session_destroy();
         return view('/loginForm');
     }

@@ -14,7 +14,7 @@ class Logger2 implements ILogger_Interface
     function getLogger()
     {
         $logger = new \Monolog\Logger('logger');
-        $stream = new StreamHandler('C:\MAMP\htdocs\CLC\CLC3\CLC3\storage\logs\monolog.txt');
+        $stream = new StreamHandler('..\storage\logs\laravel.log');
         $formatter = new Formatter();
         $logger->pushHandler($stream);
         return $logger;
